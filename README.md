@@ -9,7 +9,7 @@ Este repositório contém códigos desenvolvidos para fins de aprendizado de **P
 - Implementação de **métodos com e sem retorno**.
 - Uso de **métodos de acesso (getters e setters)**.
 - Aplicação de **encapsulamento**.
-- Uso de **construtor (`constructor`)** para inicialização de objetos.
+- Uso de `constructor` para inicialização de objetos.
 - Uso do **operador `instanceof`** para verificação de tipo de objeto.
 - Sobrescrita do método **`toString()`** para representação em texto do objeto.
 - Utilização de **listas (`ArrayList`)** para armazenar múltiplos filmes.
