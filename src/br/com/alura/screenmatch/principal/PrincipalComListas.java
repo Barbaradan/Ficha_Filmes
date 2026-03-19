@@ -4,6 +4,9 @@ import br.com.alura.screenmatch.modelos.Serie;
 import br.com.alura.screenmatch.modelos.Titulo;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class PrincipalComListas {
     public static void main(String[] args) {
@@ -28,7 +31,22 @@ public class PrincipalComListas {
             }
         }
 
-        ArrayList<String> buscaPorArtista = new ArrayList<>();
+        ArrayList<String> buscaArtista = new ArrayList<>();
+        buscaArtista.add("Ian Somerhaulder");
+        buscaArtista.add("Park BoGum");
 
+        //uso do collections
+        Collections.sort(buscaArtista);
+        System.out.println("Depois da ordenação: ");
+        System.out.println(buscaArtista);
+        System.out.println("Lista de titulos ordenados:" );
+
+        Collections.sort(lista);
+        System.out.println(lista);
+
+        //forma curta e moderna do comparator 
+        lista.sort(Comparator.comparing(Titulo::getAnoDeLancamento));
+        System.out.println("Ordenando pelo ano: ");
+        System.out.println(lista);
     }
 }
