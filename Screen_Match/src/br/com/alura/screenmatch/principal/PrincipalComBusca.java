@@ -22,12 +22,14 @@ public class PrincipalComBusca {
         Scanner leitura = new Scanner(System.in);
 
         String busca = "";
-        while (!busca.equalsIgnoreCase("SAIR")) { //o ! é diferente
+
+
+        while (!busca.equalsIgnoreCase("sair")) { //o ! é diferente
 
             System.out.println("Digite o filme para busca: ");
             var busca = leitura.nextLine();
 
-            if(busca.equalsIgnoreCase("SAIR")){
+            if(busca.equalsIgnoreCase("sair")){
                 break;
             }
 
