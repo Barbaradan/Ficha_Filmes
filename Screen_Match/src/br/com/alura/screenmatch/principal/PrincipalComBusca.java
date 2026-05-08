@@ -14,6 +14,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.SortedMap;
 
@@ -22,12 +24,17 @@ public class PrincipalComBusca {
         Scanner leitura = new Scanner(System.in);
 
         String busca = "";
+        List <Titulo> titulos = new ArrayList<>();
 
+        Gson gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setPrettyPrinting()
+                .create();
 
         while (!busca.equalsIgnoreCase("sair")) { //o ! é diferente
 
             System.out.println("Digite o filme para busca: ");
-            var busca = leitura.nextLine();
+            busca = leitura.nextLine();
 
             if(busca.equalsIgnoreCase("sair")){
                 break;
@@ -46,9 +53,6 @@ public class PrincipalComBusca {
                 String json = response.body();
                 System.out.println(json);
 
-                Gson gson = new GsonBuilder()
-                        .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                        .create();
                 //Titulo meuTitulo = gson.fromJson(json, Titulo.class);
                 TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
                 System.out.println(meuTituloOmdb);
@@ -56,9 +60,7 @@ public class PrincipalComBusca {
                 Titulo meuTitulo = new Titulo(meuTituloOmdb);
                 System.out.println("Titulo ja convertido: " + meuTitulo);
 
-                FileWriter escrita = new FileWriter("filmes.txt");
-                escrita.write(meuTitulo.toString());
-                escrita.close();
+                titulos.add(meuTitulo);
 
             } catch (NumberFormatException e) {
                 System.out.println("Aconteceu um erro: \n" + e.getMessage());
@@ -68,6 +70,12 @@ public class PrincipalComBusca {
                 System.out.println(e.getMessage());
             }
         }
+
+        System.out.println(titulos);
+
+        FileWriter escrita = new FileWriter("filmes.json");
+        escrita.write(gson.toJson(titulos));
+        escrita.close();
 
         System.out.println("O programa finalizou corretamente!");
     }

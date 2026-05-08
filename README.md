@@ -14,6 +14,7 @@ Este repositório contém códigos desenvolvidos para fins de aprendizado de **P
 - Sobrescrita do método **`toString()`** para representação em texto do objeto.
 - Utilização de **listas (`ArrayList`)** para armazenar múltiplos filmes.
 - Uso de **Collections (`Collections.sort`)** para ordenação de dados.
+- Consumindo API, gravando arquivos e lidando com erros (foco na class **PrincipalComBusca**)
 
 ## 🎯 Objetivo
 Fixar os conceitos fundamentais de **classe, objeto, atributos e métodos em Java**, além de praticar a organização e manipulação de objetos dentro de uma aplicação simples.
