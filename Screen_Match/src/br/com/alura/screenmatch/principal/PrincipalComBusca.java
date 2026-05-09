@@ -20,13 +20,13 @@ import java.util.Scanner;
 import java.util.SortedMap;
 
 public class PrincipalComBusca {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static <Gson> void main(String[] args) throws IOException, InterruptedException {
         Scanner leitura = new Scanner(System.in);
 
         String busca = "";
         List <Titulo> titulos = new ArrayList<>();
 
-        Gson gson = new GsonBuilder()
+        com.google.gson.Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
                 .setPrettyPrinting()
                 .create();
@@ -54,7 +54,7 @@ public class PrincipalComBusca {
                 System.out.println(json);
 
                 //Titulo meuTitulo = gson.fromJson(json, Titulo.class);
-                TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
+                TituloOmdb meuTituloOmdb = ((com.google.gson.Gson) gson).fromJson(json, TituloOmdb.class);
                 System.out.println(meuTituloOmdb);
                 //try {
                 Titulo meuTitulo = new Titulo(meuTituloOmdb);
@@ -74,7 +74,7 @@ public class PrincipalComBusca {
         System.out.println(titulos);
 
         FileWriter escrita = new FileWriter("filmes.json");
-        escrita.write(gson.toJson(titulos));
+        escrita.write(((com.google.gson.Gson) gson).toJson(titulos));
         escrita.close();
 
         System.out.println("O programa finalizou corretamente!");
